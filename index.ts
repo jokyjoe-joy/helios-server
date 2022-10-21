@@ -6,6 +6,7 @@ import * as bodyParser from "body-parser";
 import Logger from "./src/middlewares/logging";
 import * as logging from "./src/utils/logging";
 import Users from "./src/routes/users";
+import Auth from "./src/routes/auth";
 
 /*
  * Setting up Express server.
@@ -17,7 +18,6 @@ const port = process.env.PORT;
 /*
  * MIDDLEWARES
  */
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(Logger);
@@ -27,6 +27,7 @@ app.use(Logger);
  */
 
 app.use("/users", Users);
+app.use("/", Auth);
 
 app.listen(port, () => {
   logging.log(`⚡️[/]: Server is running at https://localhost:${port}`);

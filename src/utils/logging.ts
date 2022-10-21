@@ -48,10 +48,14 @@ export const error = function(d: string) {
   }
 };
 
-export const Warn = function() {
-  Error("Logging.warn is not implemented yet.");
+export const warn = function(d: string) {
+  const output = `${getTime()} - ⚠️ [WARN]: ${util.format(d)}`+ "\n";
+  writeToLogFile(output);
+  if (process.env.LOG_OUT == "SHELL" || process.env.LOG_OUT == "ALL") {
+    process.stdout.write(output);
+  }
 };
 
-export const Info = function() {
+export const info = function() {
   Error("Logging.info is not implemented yet");
 };

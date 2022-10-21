@@ -5,24 +5,31 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npx tsc",
-    "start": "node dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "lint": "eslint . --ext .ts,.tsx --quiet"
+    "lint": "eslint . --ext .ts,.tsx --quiet",
+    "test": "npm run build && env NODE_ENV=test env LOG_OUT=FILE mocha dist/test/users.js --reporter spec --exit"
   },
   "author": "jokyjoe-joy",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pg-promise": "^10.12.1"
   },
   "devDependencies": {
     "@types/express": "^4.17.14",
+    "@types/mocha": "^10.0.0",
     "@types/node": "^18.11.0",
     "@typescript-eslint/eslint-plugin": "^5.40.1",
     "@typescript-eslint/parser": "^5.40.1",
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
     "concurrently": "^7.4.0",
     "eslint": "^8.25.0",
     "eslint-config-standard": "^17.0.0",
+    "mocha": "^5.1.1",
     "nodemon": "^2.0.20",
     "typescript": "^4.8.4"
   }

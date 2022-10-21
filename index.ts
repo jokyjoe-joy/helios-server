@@ -1,19 +1,36 @@
-import express, { Express, Request, Response } from "express";
+import express, { Express } from "express";
 import * as dotenv from "dotenv";
+// Need to config here, because some imports already use it.
+dotenv.config(); 
+import * as bodyParser from "body-parser";
 import Logger from "./src/middlewares/logging";
-import getTime from "./src/utils/utils";
+import * as logging from "./src/utils/logging";
+import Users from "./src/routes/users";
 
-dotenv.config();
+/*
+ * Setting up Express server.
+ */
 
 const app: Express = express();
 const port = process.env.PORT;
 
+/*
+ * MIDDLEWARES
+ */
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(Logger);
 
-app.get("/", (_req: Request, res: Response) => {
-  res.send("Express + TypeScript Server");
-});
+/*
+ * ROUTES
+ */
+
+app.use("/users", Users);
 
 app.listen(port, () => {
-  console.log(`⚡️[/]: ${getTime()} - Server is running at https://localhost:${port}`);
+  logging.log(`⚡️[/]: Server is running at https://localhost:${port}`);
 });
+
+// Export app for testing purposes.
+export default app;

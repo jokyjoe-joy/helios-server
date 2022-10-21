@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express";
-import getTime from "../utils/utils";
+import * as logging from "../utils/logging";
 
 const Logger = function (req: Request, res: Response, next: NextFunction) {
-  console.log(`⚡️[${req.originalUrl}]: ${getTime()} - ${req.method} request from ${req.ip}.`);
+  logging.log(`⚡️[${req.originalUrl}]: ${req.method} request from ${req.ip}.`);
   next();
 };
 

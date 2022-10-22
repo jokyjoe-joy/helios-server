@@ -24,6 +24,10 @@ export function generateAccessToken(username: string, role: string) {
 }
 
 export function authenticate(req: Request, res: Response, next: NextFunction) {
+  // Header is a key-value pair:
+  // { "Authorization": "Bearer ACCESS_TOKEN" }
+  // E.g.:
+  // { "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpX..." }
   const authHeader = req.headers["authorization"];
   const token = authHeader?.split(" ")[1];
 
@@ -35,6 +39,9 @@ export function authenticate(req: Request, res: Response, next: NextFunction) {
       return res.sendStatus(403);
     }
 
+    // Req.user = { username: string, role: string, iat: number, exp: number }.
+    // See jwt.sign() for further info.
+    // If you want to add more properties, also extend "../types/express/index.d.ts".
     req.user = user;
 
     next();

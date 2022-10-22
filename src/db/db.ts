@@ -4,10 +4,10 @@ import * as logging from "../utils/logging";
 
 const pgp: IMain = pgPromise({
   query(e: any) {
-    logging.log(`🗄️ [DB]: Running '${e.query}'`);
+    logging.log(`🗄️[DB]: Running '${e.query}'`);
   },
   receive(data: any, result: IResultExt) {
-    logging.log(`🗄️ [DB]: Received ${result.rowCount} row(s).`);
+    logging.log(`🗄️[DB]: Received ${result.rowCount} row(s).`);
   }
 });
 

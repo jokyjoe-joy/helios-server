@@ -17,10 +17,10 @@ router.get("/:username", authenticate, userController.userGet);
 /*
  * Creating new user.
  */
-router.post("/", userController.userCreate);
+router.post("/", authenticate, isAdmin, userController.userCreate);
 
 /*
- * Deleting specified user.
+ * Deleting specified user. If not own username, then needs admin rights.
  */
 router.delete("/:username", authenticate, userController.userDelete);
 

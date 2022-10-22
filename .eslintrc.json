@@ -1,28 +1,53 @@
 {
     "root": true,
-    "env": {
+    "env": 
+    {
         "browser": true,
         "es2021": true
     },
-    "extends": [
+    "extends": 
+    [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended"
     ],
-    "overrides": [
-    ],
+    "overrides": [],
     "parser": "@typescript-eslint/parser",
-    "parserOptions": {
+    "parserOptions": 
+    {
         "ecmaVersion": "latest",
         "project": ["./tsconfig.json"]
     },
-    "plugins": [
+    "plugins": 
+    [
         "@typescript-eslint"
     ],
-    "rules": {
+    "rules": 
+    {
         "indent": ["error", 2],
-        "linebreak-style": ["error", "unix"],
+        "camelcase": ["error", { "properties": "always" }],
         "quotes": ["error", "double"],
-        "semi": [2, "always"],
-        "@typescript-eslint/no-explicit-any": "off"
+        "semi": ["error", "always"],
+        "linebreak-style": ["error", "unix"],
+        "capitalized-comments": ["error", "always", { "ignoreConsecutiveComments": true }],
+        "spaced-comment": ["error", "always"],
+        "brace-style": ["error", "allman"],
+        "@typescript-eslint/no-explicit-any": "off",
+        "curly": "error",
+        "max-lines": ["error", { "max": 300 }],
+        "max-len": ["error", { "code": 140, "tabWidth": 2 }],
+        "array-bracket-spacing": ["error", "never"],
+        "no-trailing-spaces": "error",
+        "space-before-blocks": 
+        [
+          "error", 
+          { "functions": "always", "keywords": "always", "classes": "always" }
+        ],
+        "object-curly-spacing": ["error", "always"],
+        "no-multi-spaces": "error",
+        "line-comment-position": ["error", { "position": "above" }],
+        "key-spacing": "error",
+        "comma-spacing": "error",
+        "comma-dangle": ["error", "never"],
+        "no-useless-escape": "error"
     }
 }

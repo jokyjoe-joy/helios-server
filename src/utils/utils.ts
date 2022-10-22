@@ -1,4 +1,5 @@
-export const getTime = function() {
+export const getTime = function()
+{
   /*
   * Needed to use .padStart, because .getX functions return the
   * time without leading zeros, e.g.: 14:47:8, which looks horrendous.
@@ -10,7 +11,8 @@ export const getTime = function() {
   return h + ":" + m + ":" + s;
 };
 
-export const getDate = function() {
+export const getDate = function()
+{
   const d = new Date();
   const y = d.getUTCFullYear();
   // Function 'getUTCMonth' returns an integer number, between 0 and 11.

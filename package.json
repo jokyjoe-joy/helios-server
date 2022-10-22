@@ -8,6 +8,7 @@
     "start": "npm run build && node dist/index.js",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
     "lint": "eslint . --ext .ts,.tsx --quiet",
+    "lint --fix": "eslint . --ext .ts,.tsx --quiet --fix",
     "test": "npm run build && env NODE_ENV=test env LOG_OUT=FILE mocha dist/test/users.js --reporter spec --exit"
   },
   "author": "jokyjoe-joy",

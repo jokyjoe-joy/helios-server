@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import * as dotenv from "dotenv";
 // Need to config here, because some imports already use it.
-dotenv.config(); 
+dotenv.config();
 import * as bodyParser from "body-parser";
 import Logger from "./src/middlewares/logging";
 import * as logging from "./src/utils/logging";
@@ -29,7 +29,8 @@ app.use(Logger);
 app.use("/users", Users);
 app.use("/", Auth);
 
-app.listen(port, () => {
+app.listen(port, () =>
+{
   logging.log(`⚡️[/]: Server is running at https://localhost:${port}`);
 });
 
